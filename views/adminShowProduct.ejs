@@ -3,22 +3,22 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Admin - Categories of Medicines</title>
+  <title>Admin - Products of Medicines</title>
   <!-- Bootstrap CSS -->
   <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
     <div class="container-fluid mt-5">
     <div class="d-flex justify-content-between align-items-center mb-4">
-      <h1>Categories of Medicines</h1>
-      <a href="/admin/addProduct" class="btn btn-primary">Add New Category</a>
+      <h1>Products of Medicines</h1>
+      <a href="/admin/addProduct" class="btn btn-primary">Add New Product</a>
     </div>
     
     <!-- Category Table -->
     
     <div class="card" style="width: auto;">
       <div class="card-header">
-        <h2 class="h5">Category List</h2>
+        <h2 class="h5">Product List</h2>
       </div>
       <div class="card-body">
         <table class="table table-bordered table-hover">
@@ -47,7 +47,7 @@
               <td><img src="<%= ele.image %>" style="max-width: 100px;"></td>
               <td>
                 <a href="/admin/<%= ele.id %>/editProduct" class="btn btn-sm btn-warning">Edit</a>
-                <button class="btn btn-sm btn-danger">  Delete</button>
+                <a href="/admin/<%= ele.id %>/deleteProduct"><button class="btn btn-sm btn-danger">Delete</button></a>
               </td>
             </tr>
             <% }) %>

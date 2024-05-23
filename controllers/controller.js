@@ -1,4 +1,4 @@
-const {Category,Product,OrderItem,Order,Payment,User} = require('../models/index')
+const {Category,Product,OrderProduct,Order,Payment,User} = require('../models/index')
 const {Op, where} = require('sequelize')
 const rupiah = require('../helper/rupiah')
 
@@ -8,6 +8,69 @@ class Controller {
         try {
             let data = await Category.findAll()
             res.render('adminShowCategory' , {data})
+        } catch (error) {
+            res.send(error)
+        }
+    }
+
+    static async renderAddCategory(req,res){
+        try {
+            let data = await Category.findAll()
+            res.render('adminAddCategory', {data})
+        } catch (error) {
+            res.send(error)
+        }
+    }
+
+    static async handlerAddCategory(req,res){
+        try {
+            const {name} = req.body
+            await Category.create({name})
+            
+            res.redirect("/admin/category")
+        } catch (error) {
+            res.send(error)
+        }
+    }
+
+    static async renderEditCategory(req, res){
+        try {
+            const {id} = req.params
+            const data = await Category.findByPk(id)
+
+            res.render("adminEditCategory", {data})
+        } catch (error) {
+            res.send(error)
+        }
+    }
+
+    static async handlerEditCategory(req, res){
+        try {
+            const {id} = req.params
+            const {name} = req.body
+
+            await Category.update({
+                name:name
+            },{
+                where:{
+                    id
+                }
+            })
+            res.redirect('/admin/category')
+        } catch (error) {
+            res.send(error)
+        }
+    }
+
+    static async deleteCategory(req,res){
+        try {
+            let {id} = req.params
+            await Category.destroy({
+                where:{
+                    id
+                }
+            })
+            res.redirect('/admin/category')
         } catch (error) {
             res.send(error)
         }
@@ -50,8 +113,6 @@ class Controller {
             const category = await Category.findAll()
             const data = await Product.findByPk(id)
             
-            console.log(data);
-            
             res.render("adminEditProduct" ,{data, category, id})
         } catch (error) {
             res.send(error)
@@ -60,7 +121,24 @@ class Controller {
 
     static async handlerEditProduct(req, res){
         try {
-            
+            const {name , description, price , stockQty , CategoryId , image } = req.body
+            let {id} = req.params
+
+             await Product.update({
+                name:name,
+                description:description,
+                price:price,
+                stockQty:stockQty,
+                CategoryId:CategoryId,
+                image:image
+            },{
+                where: {
+                    id
+                }
+            })
+
+            res.redirect(`/admin/product`)
+
         } catch (error) {
             res.send(error)
         }
@@ -68,7 +146,13 @@ class Controller {
 
     static async deleteProduct(req, res){
         try {
-            
+            let {id} = req.params
+            await Product.destroy({
+                where:{
+                    id
+                }
+            })
+            res.redirect('/admin/product')
         } catch (error) {
             res.send(error)
         }

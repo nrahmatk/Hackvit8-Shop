@@ -46,6 +46,30 @@
         "stockQty":50,
         "CategoryId": 1,
         "image" : "https://images.tokopedia.net/img/cache/500-square/VqbcmM/2021/7/1/d9f6a28f-6979-44e1-ab4a-72f718ec246b.jpg"
+    },
+    {
+        "name":"Panadol",
+        "description": "obat dengan kandungan Paracetamol yang dapat digunakan untuk meringankan rasa sakit pada sakit kepala, sakit gigi, sakit pada otot dan menurunkan demam.",
+        "price" : 16500,
+        "stockQty":50,
+        "CategoryId": 4,
+        "image" : "https://d2qjkwm11akmwu.cloudfront.net/thumbnails/409727_29-8-2022_15-32-7-1665778687.png"
+    },
+    {
+        "name":"OBH COMBI Batuk dan Flu",
+        "description": "obat batuk dengan kandungan OBH, Paracetamol, Ephedrine HCl, dan Chlorphenamine maleat yang digunakan untuk meredakan batuk disertai gejala-gejala flu seperti demam, sakit kepala, hidung tersumbat, dan bersin-bersin",
+        "price" : 16500,
+        "stockQty":50,
+        "CategoryId": 4,
+        "image" : "https://d2qjkwm11akmwu.cloudfront.net/products/247171_19-1-2023_10-49-30.webp"
+    },
+    {
+        "name":"Cetirgi 10 mg 10 Tablet",
+        "description": "obat batuk dengan kandungan OBH, Paracetamol, Ephedrine HCl, dan Chlorphenamine maleat yang digunakan untuk meredakan batuk disertai gejala-gejala flu seperti demam, sakit kepala, hidung tersumbat, dan bersin-bersin",
+        "price" : 56900,
+        "stockQty":50,
+        "CategoryId": 2,
+        "image" : "https://d2qjkwm11akmwu.cloudfront.net/products/688450_12-10-2021_13-11-51-1665825787.webp"
     }
     
 ]

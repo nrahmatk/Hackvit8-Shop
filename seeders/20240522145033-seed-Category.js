@@ -12,11 +12,11 @@ module.exports = {
     return ele
     })
 
-    await queryInterface.bulkInsert('Categories', data)
+    await queryInterface.bulkInsert('Categories', data,{})
   },
 
   async down (queryInterface, Sequelize) {
 
-    await queryInterface.bulkDelete('Categories', data)
+    await queryInterface.bulkDelete('Categories', data,{})
   }
 };

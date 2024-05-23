@@ -9,6 +9,11 @@ router.get('/', (req, res) => {
 
 // router untuk category
 router.get('/admin/category', Controller.showCategories)
+router.get('/admin/addCategory', Controller.renderAddCategory)
+router.post('/admin/addCategory', Controller.handlerAddCategory)
+router.get('/admin/:id/editCategory', Controller.renderEditCategory)
+router.post('/admin/:id/editCategory', Controller.handlerEditCategory)
+router.get('/admin/:id/deleteCategory', Controller.deleteCategory)
 
 // router untuk product
 router.get('/admin/product', Controller.showProducts)
@@ -16,6 +21,7 @@ router.get('/admin/addProduct', Controller.renderAddProduct)
 router.post('/admin/addProduct', Controller.handlerAddProduct)
 router.get('/admin/:id/editProduct', Controller.renderEditProduct)
 router.post('/admin/:id/editProduct', Controller.handlerEditProduct)
+router.get('/admin/:id/deleteProduct',Controller.deleteProduct)
 
 router.get('/register', UserController.readRegister)
 router.post('/register', UserController.handleRegister)
