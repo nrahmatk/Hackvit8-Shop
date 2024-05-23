@@ -55,7 +55,6 @@ module.exports = (sequelize, DataTypes) => {
     dateOfBirth: {
       type: DataTypes.DATE,
       allowNull: false,
-      unique: true,
       validate: {
         notNull: {
           msg: "Date of birth is required"
@@ -68,7 +67,9 @@ module.exports = (sequelize, DataTypes) => {
     username: {
       type: DataTypes.STRING,
       allowNull: false,
-      unique: true,
+      unique: {
+        msg: 'Username is already in use'
+      },
       validate: {
         notNull: {
           msg: "Username is required"
@@ -81,7 +82,9 @@ module.exports = (sequelize, DataTypes) => {
     email: {
       type: DataTypes.STRING,
       allowNull: false,
-      unique: true,
+      unique: {
+        msg: 'Email is already in use'
+      },
       validate: {
         notNull: {
           msg: "Email is required"
@@ -89,7 +92,9 @@ module.exports = (sequelize, DataTypes) => {
         notEmpty: {
           msg: "Email is required"
         },
-        isEmail: true
+        isEmail: {
+          msg: "Please enter email correctly"
+        }
       }
     },
     password: {

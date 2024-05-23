@@ -3,7 +3,10 @@
 
 <div class="container">
   <div class="my-5 text-center">
-      <h1 class="fs-1">Your Cart</h1>
+        <h1 class="fs-1">Your Cart</h1>
+        <% if (removed) { %>
+            <p class="text-danger-emphasis">Items <u><%= removed %></u> has been removed from cart</p>
+        <% } %>
   </div>
 <% if (items.length === 0) { %>
     <p class="fs-2 text-center">Your cart is empty.</p>

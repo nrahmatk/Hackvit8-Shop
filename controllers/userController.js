@@ -43,6 +43,9 @@ class userController {
             res.send(error)
         }
     }
+    
+
+    
     static async showCategoriesById(req, res){
         try {
             const {id} = req.params
@@ -105,6 +108,7 @@ class userController {
         const role = req.session.userRole
 
         try {
+            let {removed} = req.query
             const order = await Order.findOne({
                 where: { UserId, orderStatus: 'active' },
                 include: [
@@ -123,7 +127,7 @@ class userController {
             const items = order.OrderProducts;
             const total = order.totalAmount;
 
-            res.render('./user/checkout', { items, total, role, rupiah });
+            res.render('./user/checkout', { items, total, role, rupiah, removed });
         } catch (error) {
             console.error(error);
             res.status(500).json({ message: 'Internal server error' });
@@ -198,17 +202,19 @@ class userController {
                 return res.redirect('/shop');
             }
 
-            const orderItem = await OrderProduct.findOne({ where: { OrderId: order.id, ProductId } });
+            const orderItem = await OrderProduct.findOne({ where: { OrderId: order.id, ProductId }, include: Product });
             if (orderItem) {
                 await orderItem.destroy();
             }
+
+            const removed = orderItem.Product.name
 
             const orderItems = await OrderProduct.findAll({ where: { OrderId: order.id } });
             const totalAmount = orderItems.reduce((sum, item) => sum + item.quantity * item.price, 0);
             order.totalAmount = totalAmount;
             await order.save();
 
-            res.redirect('/shop/checkout');
+            res.redirect(`/shop/checkout?removed=${removed}`);
         } catch (error) {
             console.error(error);
             res.status(500).json({ message: 'Internal server error' });
@@ -289,6 +295,17 @@ class userController {
                 paymentAmount: order.totalAmount,
                 paymentDate: new Date()
             });
+
+            // Update product stock and empty the cart
+            const orderProducts = await OrderProduct.findAll({ where: { OrderId: order.id } });
+
+            for (const orderProduct of orderProducts) {
+                const product = await Product.findByPk(orderProduct.ProductId);
+                if (product) {
+                    product.stock -= orderProduct.quantity;
+                    await product.save();
+                }
+            }
 
             // Redirect to generate invoice
             res.redirect(`/shop/checkout/invoice/${order.id}`);

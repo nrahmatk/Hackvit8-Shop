@@ -21,7 +21,7 @@
         <% data.forEach(el => { %>
             <div class="col">
                 <div class="card h-100">
-                    <img src="<%= el.image %>" class="card-img-top img-cover img-fluid" alt="..." style="max-height: 100%;; object-fit: cover;">
+                    <img src="<%= el.image %>" class="card-img-top img-cover img-fluid" alt="..." style="max-height: 100%;; object-fit: cover;" data-toggle="modal" data-target="#productModal<%= el.id %>">
                     <div class="card-body">
                         <h5 class="card-title text-truncate" ><%= el.name %></h5>
                         <p class="card-text text-truncate"><%= rupiah(el.price) %></p>
@@ -43,9 +43,35 @@
                     </form>
                 </div>
             </div>
+
+
+          <!-- Modal -->
+          <div class="modal fade" id="productModal<%= el.id %>" tabindex="-1" role="dialog" aria-labelledby="productModalLabel<%= el.id %>" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="productModalLabel<%= el.id %>"><%= el.name %></h1>
+                        <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close">
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <img src="<%= el.image %>" class="img-fluid" alt="<%= el.name %>">
+                        <p><%= el.description %></p>
+                        <p><%= rupiah(el.price) %></p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-warning rounded-5" data-dismiss="modal">Close</button>
+                        <!-- Tambahkan tombol lain jika diperlukan -->
+                    </div>
+                </div>
+            </div>
+        </div>
     <% }) %>
     </div>
 </div>
+
+
+
 
 <script>
     document.querySelectorAll('.add-to-cart-btn').forEach(button => {

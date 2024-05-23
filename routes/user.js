@@ -7,10 +7,10 @@ router.get('/', (req, res) => {
   })
 router.get('/products', userController.showProducts)
 router.get('/categories', userController.showCategories)
-router.get('/category/:id', userController.showCategoriesById)
 router.post('/products/add-to-cart', userController.addToCart);
 router.get('/checkout', userController.showCheckoutForm);
 router.post('/checkout', userController.processCheckout);
+router.get('/category/:id', userController.showCategoriesById)
 router.post('/checkout/increase/:ProductId', userController.increaseQuantity);
 router.post('/checkout/decrease/:ProductId', userController.decreaseQuantity);
 router.post('/checkout/remove/:ProductId', userController.removeItem);
