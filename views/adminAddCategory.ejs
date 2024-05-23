@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Add Product</title>
+  <title>Add Category</title>
   <!-- Bootstrap CSS -->
   <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
   <!-- Custom CSS -->
@@ -28,11 +28,44 @@
       background-color: #0056b3;
       border-color: #0056b3;
     }
+    .navbar-brand {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+        .navbar-dark .navbar-nav .nav-link {
+            color: rgba(255, 255, 255, 0.75);
+        }
+        .navbar-dark .navbar-nav .nav-link:hover,
+        .navbar-dark .navbar-nav .nav-link:focus {
+            color: #fff;
+        }
+        .dropdown-menu {
+            background-color: #343a40;
+        }
+        .dropdown-item {
+            color: rgba(255, 255, 255, 0.75);
+        }
+        .dropdown-item:hover,
+        .dropdown-item:focus {
+            color: #fff;
+            background-color: #495057;
+        }
+        .btn-outline-success {
+            color: #fff;
+            border-color: #28a745;
+        }
+        .btn-outline-success:hover {
+            color: #fff;
+            background-color: #28a745;
+            border-color: #28a745;
+        }
+
   </style>
 </head>
 <body>
+  <%- include('partial/_navbar') %>
   <div class="container mt-5">
-    <h1 class="mb-4 text-center">Add Product</h1>
+    <h1 class="mb-4 text-center">Add Category</h1>
     
     <!-- Product Form -->
     <form action="/admin/addCategory" method="post">

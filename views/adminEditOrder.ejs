@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Edit Category</title>
+  <title>Edit Order</title>
   <!-- Bootstrap CSS -->
   <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
   <!-- Custom CSS -->
@@ -32,13 +32,21 @@
 </head>
 <body>
   <div class="container mt-5">
-    <h1 class="mb-4 text-center">Edit Category</h1>
+    <h1 class="mb-4 text-center">Edit Order</h1>
     
     <!-- Product Form -->
-    <form action="/admin/<%= data.id %>/editCategory" method="post">
+    <form action="/admin/<%= data.id %>/editOrder" method="post">
       <div class="form-group">
-        <label for="name">Category Name</label>
-        <input type="text" class="form-control" name="name" placeholder="Enter product name" value="<%= data.name %>" required>
+        <label for="name">UserId</label>
+        <input type="text" class="form-control" name="UserId" placeholder="Enter product name" value="<%= data.UserId %>" required>
+      </div>
+      <div class="form-group">
+        <label for="name">Order Status</label>
+        <input type="text" class="form-control" name="orderStatus" placeholder="Enter product name" value="<%= data.orderStatus %>" required>
+      </div>
+      <div class="form-group">
+        <label for="name">Total Amount</label>
+        <input type="text" class="form-control" name="totalAmount" placeholder="Enter product name" value="<%= data.totalAmount %>" required>
       </div>
       <div class="text-center">
         <button type="submit" class="btn btn-primary">Submit</button>

@@ -10,32 +10,36 @@
 <body>
   <div class="container mt-5">
     <div class="d-flex justify-content-between align-items-center mb-4">
-      <h1>Categories of Medicines</h1>
+      <h1>Order of Medicines</h1>
       <a href="addCategory.html" class="btn btn-primary">Add New Category</a>
     </div>
     
     <!-- Category Table -->
     <div class="card">
       <div class="card-header">
-        <h2 class="h5">Category List</h2>
+        <h2 class="h5">Order List</h2>
       </div>
       <div class="card-body">
         <table class="table table-bordered table-hover">
           <thead class="thead-dark">
             <tr>
               <th scope="col">NO</th>
-              <th scope="col">Category Name</th>
-              <th scope="col">Actions</th>
+              <th scope="col">User Name</th>
+              <th scope="col">Order Status</th>
+              <th scope="col">Total Amount</th>
+              <th scope="col">Action</th>
             </tr>
           </thead>
           <tbody>
             <!-- Example Row -->
             <% data.forEach((ele,i) => { %>
             <tr>
-              <th scope="row"><%= i + 1 %></th>
-              <td><%= ele.name %></td>
+              <td scope="row"><%= i + 1 %></td>
+              <td scope="row"><%= ele.User.username%></td>
+              <td scope="row"><%= ele.orderStatus%></td>
+              <td scope="row"><%= rupiah(ele.totalAmount)%></td>
               <td>
-                <a href="editCategory.html" class="btn btn-sm btn-warning">Edit</a>
+                <a href="/admin/<%= ele.id %>/editOrder" class="btn btn-sm btn-warning">Edit</a>
                 <button class="btn btn-sm btn-danger">  Delete</button>
               </td>
             </tr>

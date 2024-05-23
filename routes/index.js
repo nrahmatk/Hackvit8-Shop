@@ -23,6 +23,16 @@ router.get('/admin/:id/editProduct', Controller.renderEditProduct)
 router.post('/admin/:id/editProduct', Controller.handlerEditProduct)
 router.get('/admin/:id/deleteProduct',Controller.deleteProduct)
 
+// router untuk orderProduct
+router.get('/admin/orderProduct', Controller.showOrderProduct)
+router.get('/admin/addOrderProduct', Controller.renderAddOrderProduct)
+router.post('/admin/addOrderProduct',Controller.handlerAddOrderProduct)
+
+// router untuk Order
+router.get('/admin/Order', Controller.showOrders)
+router.get('/admin/:id/editOrder', Controller.renderEditOrder)
+router.post('/admin/:id/editOrder', Controller.handlerEditOrder)
+
 router.get('/register', UserController.readRegister)
 router.post('/register', UserController.handleRegister)
 

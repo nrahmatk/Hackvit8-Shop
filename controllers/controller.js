@@ -158,25 +158,107 @@ class Controller {
         }
     }
 
-// controller untuk orderItem : show , add , update, delete
-    static async showOrdersItem(req, res){
+// controller untuk orderProduct : show , add , update, delete
+    static async showOrderProduct(req, res){
         try {
-            let data = await OrderItem.findAll({
-                include: Product,
-                include: Order
-            })
-            res.render('adminShowOrderItem', {data})
+            let data = await OrderProduct.findAll({
+                include: [
+                    {
+                        model: Product,
+                    },
+                    {
+                        model: Order,
+                    }
+                ]
+            });
+            // res.send(data);
+            res.render('adminShowOrderProduct', {data, rupiah})
         } catch (error) {
             res.send(error)
         }
     }
 
+    static async renderAddOrderProduct(req,res){
+        try {
+            
+        } catch (error) {
+            res.send(error)
+        }
+    }
+
+    static async handlerAddOrderProduct(req, res){
+        try {
+            
+        } catch (error) {
+            res.send(error)
+        }
+    }
+
+    static async renderEditOrderProduct(req, res){
+        try {
+            
+        } catch (error) {
+            res.send(error)
+        }
+    }
+
+    static async handlerEditOrderProduct(req, res){
+        try {
+            
+        } catch (error) {
+            res.send(error)
+        }
+    }
+
+
+// controller untuk orders : show, edit , add, delete
     static async showOrders(req, res){
         try {
             let data = await Order.findAll({
-                include: User
+                include: [
+                    {
+                        model: User,
+                    },
+                    {
+                        model: OrderProduct,
+                    }
+                ]
             })
-            res.render('adminShowOrder', {data})
+            
+            // res.send(data)
+            res.render('adminShowOrder', {data,rupiah})
+        } catch (error) {
+            res.send(error)
+        }
+    }
+
+    static async renderEditOrder(req,res){
+        try {
+            const {id} = req.params
+            const data = await Order.findByPk(id)
+
+            res.render("adminEditOrder", {data,id})
+        } catch (error) {
+            res.send(error)
+        }
+    }
+
+    static async handlerEditOrder(req,res){
+        try {
+            const {UserId,orderStatus,totalAmount} = req.body
+            const {id} = req.params
+
+            await Order.update({
+                UserId:UserId,
+                orderStatus:orderStatus,
+                totalAmount:totalAmount
+            },{
+                where:{
+                    id
+                }
+            })
+            
+            res.redirect('/admin/Order')
         } catch (error) {
             res.send(error)
         }
