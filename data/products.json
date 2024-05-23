@@ -1,0 +1,43 @@
+[
+    {
+        "name":"Cerebrofot",
+        "description": "vitamin untuk membantu pertumbuhan anak-anak",
+        "price" : 40000,
+        "stockQty": 15,
+        "CategoryId" : 3,
+        "image":""
+    },
+    {
+        "name":"Amoxicillin",
+        "description": "Amoxicillin merupakan antibiotik untuk mengatasi berbagai macam infeksi bakteri.",
+        "price" : 20000,
+        "stockQty":20,
+        "CategoryId": 2,
+        "image" : ""
+    },
+    {
+        "name":"Enervon-C",
+        "description": "Vitamin C untuk menjaga daya tahan tubuh anda",
+        "price" : 34000,
+        "stockQty":23,
+        "CategoryId": 3,
+        "image" : ""
+    },
+    {
+        "name":"Betadine",
+        "description": "produk antiseptik yang bermanfaat untuk mencegah pertumbuhan dan membunuh kuman penyebab infeksi",
+        "price" : 14000,
+        "stockQty":40,
+        "CategoryId": 1,
+        "image" : ""
+    },
+    {
+        "name":"Sanmol",
+        "description": "obat yang berfungsi untuk meredakan demam dan nyeri, termasuk untuk mengobati nyeri haid hingga sakit gigi yang tersedia dalam bentuk tablet, sirup, tetes, suppositoria dan infus",
+        "price" : 8000,
+        "stockQty":50,
+        "CategoryId": 4,
+        "image" : ""
+    }
+    
+]

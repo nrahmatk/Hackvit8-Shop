@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Author</title>
+</head>
+<body>
+    <center>
+    <form action="" style="margin-top: 100px; margin-bottom: 20px;">
+        <input type="search" name="search">x
+        <input type="submit" name="search" value="search">
+    </form>
+    <a href="/books/add"><button>ADD</button></a>
+    <a href="/books/emptyList"><button>emptyList</button></a>
+    <table border="1">
+        <tr>
+            <th>No</th>
+            <th>Title</th>
+            <th>ISBN</th>
+            <th>Price</th>
+            <th>Stock</th>
+            <th>Author</th>
+            <th>Action</th>
+        </tr>
+
+        <% data.forEach((ele, i) => { %>
+        <tr>
+            <td><%= i + 1 %></td>
+            <td><%= ele.tittle %></td>
+            <td><%= ele.isbn %></td>
+            <td><%= duit(ele.price) %></td>
+            <td><%= ele.stock  %></td>
+            <td><%= ele.Author.name %></td>
+            <td>
+                <a href="/books/buy/<%= ele.id %>">
+                    <button type="button">BUY</button>
+                </a>
+            </td>
+        </tr>
+        <% }) %>
+        
+    </table>
+</center>
+</body>
+</html>
