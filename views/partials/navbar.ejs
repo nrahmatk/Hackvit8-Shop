@@ -1,0 +1,25 @@
+        
+        <nav class="navbar sticky-top navbar-defauld bg-body-tertiary shadow border-bottom border-warning">
+          <div class="container-fluid">
+          <ul class="navbar-nav mx-auto d-flex flex-row">
+            <li class="nav-item mx-3"><a class="nav-link active" href="/">Home</a></li>
+            <% if (!role) { %> 
+              <!-- Belum login -->
+              <li class="nav-item mx-3"><a class="nav-link active" href="/login" >Login</a></li>
+              <li class="nav-item mx-3"><a class="nav-link active" href="/register" >Register</a></li>
+            <% } else if (role === 'admin') { %>
+              <!-- Login sebagai admin -->
+              <li class="nav-item mx-3"><a class="nav-link active" href="/admin">Admin Dashboard</a></li>
+              <li class="nav-item mx-3"><a class="nav-link active" href="/profile">Profile</a></li>
+              <li class="nav-item mx-3"><a class="nav-link active" href="/settings">Settings</a></li>
+              <li class="nav-item mx-3"><a class="nav-link active" href="/logout">Logout</a></li>
+            <% } else if (role === 'user') { %>
+              <!-- Login sebagai user -->
+              <li class="nav-item mx-3"><a class="nav-link active" href="/user">User Dashboard</a></li>
+              <li class="nav-item mx-3"><a class="nav-link active" href="/profile">Profile</a></li>
+              <li class="nav-item mx-3"><a class="nav-link active" href="/settings">Settings</a></li>
+              <li class="nav-item mx-3"><a class="nav-link active" href="/logout">Logout</a></li>
+            <% } %>
+          </ul>
+          </div>
+        </nav>
