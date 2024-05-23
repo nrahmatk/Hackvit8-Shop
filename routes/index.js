@@ -12,7 +12,10 @@ router.get('/admin/category', Controller.showCategories)
 
 // router untuk product
 router.get('/admin/product', Controller.showProducts)
-router.get('/admin/addProduct', Controller.AddProduct)
+router.get('/admin/addProduct', Controller.renderAddProduct)
+router.post('/admin/addProduct', Controller.handlerAddProduct)
+router.get('/admin/:id/editProduct', Controller.renderEditProduct)
+router.post('/admin/:id/editProduct', Controller.handlerEditProduct)
 
 router.get('/register', UserController.readRegister)
 router.post('/register', UserController.handleRegister)

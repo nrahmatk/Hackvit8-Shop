@@ -35,36 +35,35 @@
     <h1 class="mb-4 text-center">Add Product</h1>
     
     <!-- Product Form -->
-    <form action="" method="post">
+    <form action="/admin/addProduct" method="post">
       <div class="form-group">
         <label for="productName">Product Name</label>
-        <input type="text" class="form-control" id="productName" placeholder="Enter product name">
+        <input type="text" class="form-control" name="name" placeholder="Enter product name">
       </div>
       <div class="form-group">
-        <label for="productDescription">Description</label>
-        <textarea class="form-control" id="productDescription" rows="3" placeholder="Enter product description"></textarea>
+        <label>Description</label>
+        <textarea class="form-control" name="description" rows="3" placeholder="Enter product description"></textarea>
       </div>
       <div class="form-group">
         <label for="productPrice">Price</label>
-        <input type="number" class="form-control" id="productPrice" placeholder="Enter product price">
+        <input type="number" class="form-control" name="price" placeholder="Enter product price">
       </div>
       <div class="form-group">
         <label for="productPrice">QTYStock</label>
-        <input type="number" class="form-control" id="productPrice" placeholder="Enter product price">
+        <input type="number" class="form-control" name="stockQty" placeholder="Enter product stock">
       </div>
       <div class="form-group">
         <label for="productCategory">Category</label>
-        <select class="form-control" id="productCategory">
-          <option>Select category</option>
-          <option>Category 1</option>
-          <option>Category 2</option>
-          <option>Category 3</option>
-          <!-- Add more categories as needed -->
+        <select class="form-control" name="CategoryId">
+        <option selected disabled name="CategoryId">Select category</option>
+        <% data.forEach(ele=> { %>   
+          <option value="<%= ele.id %>"><%= ele.name%></option>
+          <% }) %>
         </select>
-      </div>
+        </div>
       <div class="form-group">
-        <label for="productDescription">IMAGEURL</label>
-        <textarea class="form-control" id="productDescription" rows="3" placeholder="Enter product description"></textarea>
+        <label>IMAGEURL</label>
+        <textarea class="form-control" name="image" rows="3" placeholder="Enter product image"></textarea>
       </div>
       <div class="text-center">
         <button type="submit" class="btn btn-primary">Submit</button>

@@ -5,7 +5,7 @@
         "price" : 40000,
         "stockQty": 15,
         "CategoryId" : 3,
-        "image":""
+        "image":"https://medicastore.com/uploads/images/IMoFT_Medicastore_Varian-produk-Cerebrofort-Gold.jpg"
     },
     {
         "name":"Amoxicillin",
@@ -13,7 +13,7 @@
         "price" : 20000,
         "stockQty":20,
         "CategoryId": 2,
-        "image" : ""
+        "image" : "https://d3bbrrd0qs69m4.cloudfront.net/images/product/large/apotek_online_k24klik_20211229101227359225_AMOXICILLIN-DEXA-500MG-TAB-100S-removebg-preview.png"
     },
     {
         "name":"Enervon-C",
@@ -21,7 +21,7 @@
         "price" : 34000,
         "stockQty":23,
         "CategoryId": 3,
-        "image" : ""
+        "image" : "https://d2wetaaf29185a.cloudfront.net/webp/m0cha-uuxahp2xiP/uploads/product/15563/15563_1630058972.9537.jpg.webp"
     },
     {
         "name":"Betadine",
@@ -29,7 +29,7 @@
         "price" : 14000,
         "stockQty":40,
         "CategoryId": 1,
-        "image" : ""
+        "image" : "https://www.static-src.com/wcsstore/Indraprastha/images/catalog/full//1030/betadine_betadine-antiseptic-solution-obat-luka-15ml_full02.jpg"
     },
     {
         "name":"Sanmol",
@@ -37,7 +37,15 @@
         "price" : 8000,
         "stockQty":50,
         "CategoryId": 4,
-        "image" : ""
+        "image" : "https://www.k24klik.com/images/product/0104k0131.jpg"
+    },
+    {
+        "name":"vitamin Ipi",
+        "description": "merupakan vitamin yang di produksi oleh PT. Supra Ferbindo Farma yang mengandung vitamin A. Penggunaan vitamin ini bertujuan untuk mencukupi asupan vitamin A yang dibutuhkan oleh tubuh. Vitamin A berperan dalam menjaga kesehatan mata.",
+        "price" : 9000,
+        "stockQty":50,
+        "CategoryId": 1,
+        "image" : "https://images.tokopedia.net/img/cache/500-square/VqbcmM/2021/7/1/d9f6a28f-6979-44e1-ab4a-72f718ec246b.jpg"
     }
     
 ]

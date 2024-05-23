@@ -1,5 +1,5 @@
 const {Category,Product,OrderItem,Order,Payment,User} = require('../models/index')
-const {Op} = require('sequelize')
+const {Op, where} = require('sequelize')
 const rupiah = require('../helper/rupiah')
 
 class Controller {
@@ -27,15 +27,18 @@ class Controller {
     
     static async renderAddProduct(req, res){
         try {
-            
+            let data = await Category.findAll()
+            res.render("adminAddProduct", {data})
         } catch (error) {
             res.send(error)
         }
     }
-
     static async handlerAddProduct(req, res){
         try {
-            
+            const {name , description, price , stockQty , CategoryId , image } = req.body
+            await Product.create({name , description, price , stockQty , CategoryId , image })
+
+            res.redirect("/admin/product")
         } catch (error) {
             res.send(error)
         }
@@ -43,7 +46,13 @@ class Controller {
     
     static async renderEditProduct(req, res){
         try {
+            let {id} = req.params
+            const category = await Category.findAll()
+            const data = await Product.findByPk(id)
             
+            console.log(data);
+            
+            res.render("adminEditProduct" ,{data, category, id})
         } catch (error) {
             res.send(error)
         }
