@@ -7,6 +7,9 @@ router.get('/', (req, res) => {
     res.send('Hello World!')
   })
 
+// router halaman admin
+router.get('/admin', Controller.homeAdmin)
+
 // router untuk category
 router.get('/admin/category', Controller.showCategories)
 router.get('/admin/addCategory', Controller.renderAddCategory)

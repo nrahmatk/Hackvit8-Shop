@@ -3,6 +3,17 @@ const {Op, where} = require('sequelize')
 const rupiah = require('../helper/rupiah')
 
 class Controller {
+
+// controller halaman admin
+    static async homeAdmin(req,res){
+        try {
+            res.render('homeAdmin')
+        } catch (error) {
+            res.send(error)
+        }
+    }
+
+
 // controller untuk categori : show, add ,update, delete
     static async showCategories(req, res){
         try {
