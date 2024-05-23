@@ -1,5 +1,5 @@
 const {Category,Product,OrderProduct,Order,Payment,User} = require('../models/index')
-const {Op} = require('sequelize')
+const { Op } = require("sequelize");
 const rupiah = require('../helper/rupiah')
 const PDFDocument = require('pdfkit');
 
@@ -19,10 +19,26 @@ class userController {
     static async showProducts(req, res){
         try {
             const role = req.session.userRole
-            let data = await Product.findAll({
-                include :Category
-            })
-            res.render('./user/products', {data, rupiah, role})
+            let {search} = req.query
+
+            let options = {
+                where: {},
+                include: Category,
+            }
+
+
+            if(search){
+                options.where.name = {[Op.iLike]: `%${search}%`}
+            }
+
+            let {dataValues} = await Product.notif()
+            
+            let data = await Product.findAll(options)
+
+
+            // res.send(data)
+
+            res.render('./user/products', {data, rupiah, role, dataValues})
         } catch (error) {
             res.send(error)
         }
@@ -37,7 +53,7 @@ class userController {
                 },
                 include :Category
             })
-            res.render('./user/products', {data, rupiah, role})
+            res.render('./user/categoriesbyid', {data, rupiah, role})
         } catch (error) {
             res.send(error)
         }

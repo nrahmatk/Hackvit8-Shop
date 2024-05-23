@@ -1,19 +1,17 @@
 <%- include('../partials/header', { title: 'Login Page' }) %>
 <%- include('../partials/navbar', { role }) %>
 
-  <div class="container mt-5">
-    <div class="d-flex justify-content-between align-items-center mb-4">
-      <h1>Categories of Medicines</h1>
-    </div>
-    
-    <ul>
-    <% data.forEach((el,i) => { %>
-        <li>
-          <a href="/shop/category/<%= el.id %>" role="button" class="btn btn-sm btn-warning"><%= el.name %></a>
+<div class="container">
+  <div class="my-5 text-center">
+      <h1 class="fs-1">Category List</h1>
+  </div>
+    <ul class="row mx-5">
+      <% data.forEach((el,i) => { %>
+        <li class="col-4">
+          <a href="/shop/category/<%= el.id %>" role="button" class="btn"><%= el.name %></a>
         </li>
-      <% }) %>
-    </ul>
-    
+        <% }) %>
+    </ul>  
   </div>
 
   <%- include('../partials/footer') %>
