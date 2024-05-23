@@ -1,0 +1,46 @@
+<%- include('../partials/header', { title: 'Login Page' }) %>
+<%- include('../partials/navbar', { role }) %>
+
+
+<h1>Products</h1>
+<div class="products">
+    <% data.forEach(product => { %>
+        <div class="product">
+            <h2><%= product.name %></h2>
+            <p>Price: $<%= product.price %></p>
+            <form class="add-to-cart" action="/products/add-to-cart" method="POST">
+                <input type="hidden" name="productId" value="<%= product.id %>">
+                <div class="quantity-selector">
+                    <button type="button" class="minus">-</button>
+                    <input type="number" name="quantity" value="1" min="1">
+                    <button type="button" class="plus">+</button>
+                </div>
+                <button type="submit">Add to Cart</button>
+            </form>
+        </div>
+    <% }) %>
+</div>
+
+<script>
+document.querySelectorAll('.quantity-selector').forEach(selector => {
+    const minusButton = selector.querySelector('.minus');
+    const plusButton = selector.querySelector('.plus');
+    const quantityInput = selector.querySelector('input[name="quantity"]');
+
+    minusButton.addEventListener('click', () => {
+        let quantity = parseInt(quantityInput.value, 10);
+        if (quantity > 1) {
+            quantityInput.value = quantity - 1;
+        }
+    });
+
+    plusButton.addEventListener('click', () => {
+        let quantity = parseInt(quantityInput.value, 10);
+        quantityInput.value = quantity + 1;
+    });
+});
+</script>
+
+
+
+  <%- include('../partials/footer') %>

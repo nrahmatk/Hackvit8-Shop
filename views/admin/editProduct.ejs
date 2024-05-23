@@ -1,0 +1,43 @@
+<%- include('../partials/header', { title: 'Login Page' }) %>
+<%- include('../partials/navbar', { role }) %>
+
+<div class="container mt-5">
+  <h1 class="mb-4 text-center">Add Product</h1>
+  
+  <!-- Product Form -->
+  <form action="/admin/<%= id %>/editProduct" method="post">
+    <div class="form-group">
+      <label for="productName">Product Name</label>
+      <input type="text" class="form-control" name="name" placeholder="Enter product name" value="<%= data.name %>" required>
+    </div>
+    <div class="form-group">
+      <label>Description</label>
+      <textarea class="form-control" name="description" rows="3" placeholder="Enter product description"><%= data.description %></textarea>
+    </div>
+    <div class="form-group">
+      <label for="productPrice">Price</label>
+      <input type="number" class="form-control" name="price" placeholder="Enter product price" value="<%= data.price %>">
+    </div>
+    <div class="form-group">
+      <label for="productPrice">QTYStock</label>
+      <input type="number" class="form-control" name="stockQty" placeholder="Enter product stock" value="<%= data.stockQty %>">
+    </div>
+    <div class="form-group">
+      <label for="productCategory">Category</label>
+      <select class="form-control" name="CategoryId" required>
+      <% category.forEach(ele=> { %>
+        <option value="<%= ele.id %>" <%= ele.id === data.CategoryId ? 'selected' : ""%>><%= ele.name%></option>
+        <% }) %>
+      </select>
+      </div>
+    <div class="form-group">
+      <label>IMAGEURL</label>
+      <textarea class="form-control" name="image" rows="3" placeholder="Enter product image"><%= data.image %></textarea>
+    </div>
+    <div class="text-center">
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </div>
+  </form>
+</div>
+
+<%- include('../partials/footer') %>

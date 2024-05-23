@@ -1,0 +1,52 @@
+<%- include('../partials/header', { title: 'Login Page' }) %>
+<%- include('../partials/navbar', { role }) %>
+
+<div class="container">
+  <div class="my-5 text-center">
+      <h1 class="fs-1">Your Cart</h1>
+  </div>
+<% if (items.length === 0) { %>
+    <p class="fs-2 text-center">Your cart is empty.</p>
+<% } else { %>
+    <form action="/checkout/update" method="POST">
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>Product</th>
+                    <th>Image</th>
+                    <th>Price</th>
+                    <th>Quantity</th>
+                    <th>Total</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% items.forEach(item => { %>
+                    <tr>
+                        <td><%= item.Product.name %></td>
+                        <td><img src="<%= item.Product.image %>" alt="" style="max-height: 100px;"></td>
+                        <td><%= rupiah(item.price) %></td>
+                        <td>
+                          <div class="row-md-2">
+                            <button type="submit" class="btn btn-warning col" formaction="/shop/checkout/decrease/<%= item.ProductId %>">-</button>
+                            <input type="text" class="col-1 mx-2" name="quantities[<%= item.ProductId %>]" value="<%= item.quantity %>" readonly>
+                            <button type="submit" class="btn btn-warning col" formaction="/shop/checkout/increase/<%= item.ProductId %>">+</button>
+                          </div>
+                        </td>
+                        <td><%= rupiah((item.quantity * item.price).toFixed(2)) %></td>
+                        <td>
+                            <button type="submit" class="btn btn-warning" formaction="/shop/checkout/remove/<%= item.ProductId %>">Remove</button>
+                        </td>
+                    </tr>
+                <% }) %>
+            </tbody>
+        </table>
+        <h2 class="fs-3 float-end">Total: <%= rupiah(total.toFixed(2)) %></h2>
+        <input type="hidden" name="paymentAmount" value="<%= total %>">
+        <button type="submit" class="btn btn-warning btn-lg" formaction="/shop/checkout">Pay Now</button>
+    </form>
+<% } %>
+  </div>
+
+  <%- include('../partials/footer') %>
+

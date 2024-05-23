@@ -5,9 +5,7 @@ const {redirectLogin, redirectAdmin, redirectUser} = require('../middleware/auth
 const adminRouter = require('./admin')
 const userRouter = require('./user')
 
-router.get('/', (req, res) => {
-  res.render('index', {role: null})
-})
+router.get('/', UserController.home)
 
 router.get('/register', UserController.readRegister)
 router.post('/register', UserController.handleRegister)

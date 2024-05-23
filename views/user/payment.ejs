@@ -1,0 +1,39 @@
+<%- include('../partials/header', { title: 'Login Page' }) %>
+<%- include('../partials/navbar', { role }) %>
+
+<div class="container">
+
+    <h1 class="fs-1 text-center mt-5">Payment</h1>
+    <p class="fs-3 text-center my-3">Please scan the barcode below to make the payment.</p>
+    <div class="d-flex justify-content-center">
+        <img src="https://media.discordapp.net/attachments/1242752321595641876/1243263713268465814/IMG_20240524_010537.jpg?ex=6650d70f&is=664f858f&hm=02c1ee49f3e42aa9a0dca3a365ccfe56546ae7588aa33109d3e819d83acdae77&=&format=webp" alt="Payment Barcode">
+    </div>
+    <div class="d-flex justify-content-center mt-3">
+    <form id="payment-form" action="/shop/checkout/confirm-payment/<%= order.id %>" method="POST">
+        <button type="button" id="pay-button" class="btn btn-warning btn-lg">I have already paid</button>
+        <button type="submit" id="invoice-button" class="btn btn-warning btn-lg" style="display: none;">Print Invoice</button>
+        <div id="loading" style="display: none;">Loading...</div>
+    </form>
+
+
+</div>
+</div>
+
+
+<!-- Include JavaScript for button handling -->
+<script>
+    document.getElementById('pay-button').addEventListener('click', function() {
+        // Hide the pay button and show the loading text
+        document.getElementById('pay-button').style.display = 'none';
+        document.getElementById('loading').style.display = 'block';
+
+        // Wait for 2 seconds
+        setTimeout(function() {
+            // Hide the loading text and show the invoice button
+            document.getElementById('loading').style.display = 'none';
+            document.getElementById('invoice-button').style.display = 'block';
+        }, 2000);
+    });
+</script>
+
+<%- include('../partials/footer') %>

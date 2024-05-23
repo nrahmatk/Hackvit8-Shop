@@ -9,15 +9,14 @@
               <li class="nav-item mx-3"><a class="nav-link active" href="/register" >Register</a></li>
             <% } else if (role === 'admin') { %>
               <!-- Login sebagai admin -->
-              <li class="nav-item mx-3"><a class="nav-link active" href="/admin">Admin Dashboard</a></li>
-              <li class="nav-item mx-3"><a class="nav-link active" href="/profile">Profile</a></li>
-              <li class="nav-item mx-3"><a class="nav-link active" href="/settings">Settings</a></li>
+              <li class="nav-item mx-3"><a class="nav-link active" href="/admin/products">Products</a></li>
+              <li class="nav-item mx-3"><a class="nav-link active" href="/admin/categories">Categories</a></li>
               <li class="nav-item mx-3"><a class="nav-link active" href="/logout">Logout</a></li>
             <% } else if (role === 'user') { %>
               <!-- Login sebagai user -->
-              <li class="nav-item mx-3"><a class="nav-link active" href="/user">User Dashboard</a></li>
-              <li class="nav-item mx-3"><a class="nav-link active" href="/profile">Profile</a></li>
-              <li class="nav-item mx-3"><a class="nav-link active" href="/settings">Settings</a></li>
+              <li class="nav-item mx-3"><a class="nav-link active" href="/shop/products">Shop</a></li>
+              <li class="nav-item mx-3"><a class="nav-link active" href="/shop/categories">Categories</a></li>
+              <li class="nav-item mx-3"><a class="nav-link active" href="/shop/checkout">Cart</a></li>
               <li class="nav-item mx-3"><a class="nav-link active" href="/logout">Logout</a></li>
             <% } %>
           </ul>

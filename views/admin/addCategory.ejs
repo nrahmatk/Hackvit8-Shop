@@ -1,0 +1,19 @@
+<%- include('../partials/header', { title: 'Login Page' }) %>
+<%- include('../partials/navbar', { role }) %>
+
+<div class="container mt-5">
+    <h1 class="mb-4 text-center">Add Product</h1>
+    
+    <!-- Product Form -->
+    <form action="/admin/addCategory" method="post">
+      <div class="form-group">
+        <label for="productName">Product Name</label>
+        <input type="text" class="form-control" name="name" placeholder="Enter product name">
+      </div>
+      <div class="text-center">
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </div>
+    </form>
+  </div>
+
+<%- include('../partials/footer') %>

@@ -2,9 +2,20 @@ const { User } = require('../models')
 const bcrypt = require('bcryptjs');
 
 class UserController {
+    static async home(req, res){
+        try {
+            let role = req.session.userRole
+            if(!role) role = null
+            res.render('index', {role, errors: null})
+        } catch (error) {
+            res.send(error)
+        }
+    }
     static async readRegister(req, res){
         try {
-            res.render('./auth-pages/register', {role: null, errors: null})
+            let role = req.session.userRole
+            if(!role) role = null
+            res.render('./auth-pages/register', {role, errors: null})
         } catch (error) {
             res.send(error)
         }
@@ -25,7 +36,11 @@ class UserController {
     }
     static async readLogin(req, res){
         try {
-            res.render('./auth-pages/login', {message: null, role: null})
+            let role = req.session.userRole
+            if(role === undefined){
+                role = null
+            } 
+            res.render('./auth-pages/login', {message: null, role})
         } catch (error) {
             res.send(error)
         }

@@ -1,0 +1,56 @@
+<%- include('../partials/header', { title: 'Login Page' }) %>
+<%- include('../partials/navbar', { role }) %>
+
+
+<div class="container-fluid mt-5">
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <h1>Products of Medicines</h1>
+    <a href="/admin/addProduct" class="btn btn-primary">Add New Product</a>
+  </div>
+  
+  <!-- Category Table -->
+  
+  <div class="card" style="width: auto;">
+    <div class="card-header">
+      <h2 class="h5">Product List</h2>
+    </div>
+    <div class="card-body">
+      <table class="table table-bordered table-hover">
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col">NO</th>
+            <th scope="col">Product Name</th>
+            <th scope="col">Description</th>
+            <th scope="col">Price</th>
+            <th scope="col">Stock</th>
+            <th scope="col">Category</th>
+            <th scope="col">image</th>
+            <th scope="col">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Example Row -->
+          <% data.forEach((ele,i) => { %>
+          <tr>
+            <th scope="row"><%= i + 1 %></th>
+            <td><%= ele.name %></td>
+            <td><%= ele.description %></td>
+            <td><%= rupiah(ele.price) %></td>
+            <td><%= ele.stockQty %></td>
+            <td><%= ele.Category.name %></td>
+            <td><img src="<%= ele.image %>" style="max-width: 100px;"></td>
+            <td>
+              <a href="/admin/<%= ele.id %>/editProduct" class="btn btn-sm btn-warning">Edit</a>
+              <a href="/admin/<%= ele.id %>/deleteProduct"><button class="btn btn-sm btn-danger">Delete</button></a>
+            </td>
+          </tr>
+          <% }) %>
+          <!-- Add more rows as needed -->
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+  
+
+  <%- include('../partials/footer') %>

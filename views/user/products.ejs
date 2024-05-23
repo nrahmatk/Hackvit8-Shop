@@ -1,0 +1,71 @@
+<%- include('../partials/header', { title: 'Login Page' }) %>
+<%- include('../partials/navbar', { role }) %>
+
+
+<div class="container">
+    <div class="my-5 text-center">
+        <h1 class="fs-1">List of Products</h1>
+    </div>
+    <div class="row row-cols-1 row-cols-md-4 g-4">
+        <% data.forEach(el => { %>
+            <div class="col">
+                <div class="card h-100">
+                    <img src="<%= el.image %>" class="card-img-top img-cover img-fluid" alt="..." style="max-height: 100%;; object-fit: cover;">
+                    <div class="card-body">
+                        <h5 class="card-title text-truncate" ><%= el.name %></h5>
+                        <p class="card-text text-truncate"><%= rupiah(el.price) %></p>
+                    </div>
+                    <form class="add-to-cart-form" action="/shop/products/add-to-cart" method="POST">
+                        <input type="hidden" name="ProductId" value="<%= el.id %>">
+                        <input type="hidden" name="price" value="<%= el.price %>">
+                        <div class="add-to-cart row m-2">
+                            <button type="button" class="add-to-cart-btn btn btn-warning">Add to Cart</button>
+                        </div>
+                        <div class="quantity-selector" style="display: none;">
+                            <div class="row m-2">
+                                <button type="button" class="minus btn btn-warning col ms-5">-</button>
+                                <input type="number" name="quantity" class="col mx-2" value="1" min="1">
+                                <button type="button" class="plus btn btn-warning col me-5">+</button>
+                                <button type="submit" class="btn btn-warning mt-2">Add to Cart</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+    <% }) %>
+    </div>
+</div>
+
+<script>
+    document.querySelectorAll('.add-to-cart-btn').forEach(button => {
+        button.addEventListener('click', (event) => {
+            const form = event.target.closest('.add-to-cart-form');
+            const addToCartDiv = form.querySelector('.add-to-cart');
+            const quantitySelectorDiv = form.querySelector('.quantity-selector');
+    
+            addToCartDiv.style.display = 'none';
+            quantitySelectorDiv.style.display = 'block';
+        });
+    });
+    
+    document.querySelectorAll('.quantity-selector').forEach(selector => {
+        const minusButton = selector.querySelector('.minus');
+        const plusButton = selector.querySelector('.plus');
+        const quantityInput = selector.querySelector('input[name="quantity"]');
+    
+        minusButton.addEventListener('click', () => {
+            let quantity = parseInt(quantityInput.value, 10);
+            if (quantity > 1) {
+                quantityInput.value = quantity - 1;
+            }
+        });
+    
+        plusButton.addEventListener('click', () => {
+            let quantity = parseInt(quantityInput.value, 10);
+            quantityInput.value = quantity + 1;
+        });
+    });
+    </script>
+
+
+  <%- include('../partials/footer') %>
