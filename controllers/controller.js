@@ -275,6 +275,20 @@ class Controller {
         }
     }
 
+    static async deleteOrder(req, res){
+        try {
+            let {id} = req.params
+            await Order.destroy({
+                where:{
+                    id
+                }
+            })
+            res.redirect('/admin/order')
+        } catch (error) {
+            res.send(error)
+        }
+    }
+
     static async showPayment(req,res){
         try {
             let data = await Payment.findAll({

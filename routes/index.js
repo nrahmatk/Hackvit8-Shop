@@ -35,6 +35,7 @@ router.post('/admin/addOrderProduct',Controller.handlerAddOrderProduct)
 router.get('/admin/Order', Controller.showOrders)
 router.get('/admin/:id/editOrder', Controller.renderEditOrder)
 router.post('/admin/:id/editOrder', Controller.handlerEditOrder)
+router.get('/admin/:id/deleteOrder',Controller.deleteOrder)
 
 router.get('/register', UserController.readRegister)
 router.post('/register', UserController.handleRegister)

@@ -41,7 +41,7 @@
               <td scope="row"><%= rupiah(ele.totalAmount)%></td>
               <td>
                 <a href="/admin/<%= ele.id %>/editOrder" class="btn btn-sm btn-warning">Edit</a>
-                <button class="btn btn-sm btn-danger">  Delete</button>
+                <a href="/admin/<%= ele.id %>/deleteOrder"><button class="btn btn-sm btn-danger">  Delete</button></a>
               </td>
             </tr>
             <% }) %>
