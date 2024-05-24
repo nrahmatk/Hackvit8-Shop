@@ -121,7 +121,7 @@ class userController {
             );
 
             if (!order) {
-                return res.render('./user/checkout', { items: [], total: 0, role});
+                return res.render('./user/checkout', { items: [], total: 0, role, removed: null});
             }
 
             const items = order.OrderProducts;
@@ -300,9 +300,9 @@ class userController {
             const orderProducts = await OrderProduct.findAll({ where: { OrderId: order.id } });
 
             for (const orderProduct of orderProducts) {
-                const product = await Product.findByPk(orderProduct.ProductId);
+                let product = await Product.findByPk(orderProduct.ProductId);
                 if (product) {
-                    product.stock -= orderProduct.quantity;
+                    product.stockQty -= orderProduct.quantity;
                     await product.save();
                 }
             }
