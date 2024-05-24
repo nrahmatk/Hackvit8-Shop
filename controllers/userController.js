@@ -326,7 +326,8 @@ class userController {
                         model: OrderProduct,
                         include: [Product]
                     },
-                    { model: Payment }
+                    { model: Payment },
+                    { model: User }
                 ]
             });
 
@@ -344,6 +345,8 @@ class userController {
             doc.text(`\n\nInvoice for Order ${order.id}`, { align: 'center' });
             doc.text(`Payment Date: ${order.Payment.formateddate}`, { align: 'center' });
             doc.text(`Total Amount: ${rupiah(order.totalAmount)}`, { align: 'center' });
+            doc.text(`\n\nRecipient's Name: ${order.User.fullName}`, { align: 'center' });
+            doc.text(`Recipient's Address: ${order.User.address}`, { align: 'center' });
 
             doc.text(`\n\nProducts:`, { align: 'left' });
             order.OrderProducts.forEach(item => {
