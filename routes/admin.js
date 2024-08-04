@@ -22,4 +22,9 @@ router.get('/:id/editProduct', adminController.renderEditProduct)
 router.post('/:id/editProduct', adminController.handlerEditProduct)
 router.get('/:id/deleteProduct', adminController.deleteProduct)
 
+// router untuk Order
+router.get('/orders', adminController.showOrders)
+router.get('/:id/editOrder', adminController.renderEditOrder)
+router.post('/:id/editOrder', adminController.handlerEditOrder)
+
 module.exports = router

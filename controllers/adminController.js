@@ -165,30 +165,6 @@ class adminController {
     }
 
 // controller untuk orderItem : show , add , update, delete
-    static async showOrdersItem(req, res){
-        try {
-            const role = req.session.userRole
-            let data = await OrderItem.findAll({
-                include: Product,
-                include: Order
-            })
-            res.render('./admin/showOrderItem', {role, data})
-        } catch (error) {
-            res.send(error)
-        }
-    }
-
-    static async showOrders(req, res){
-        try {
-            const role = req.session.userRole
-            let data = await Order.findAll({
-                include: User
-            })
-            res.render('./admin/showOrder', {role, data})
-        } catch (error) {
-            res.send(error)
-        }
-    }
 
     static async showPayment(req,res){
         try {
@@ -196,6 +172,59 @@ class adminController {
                 include:Order
             })
             res.render('./admin/showPayment')
+        } catch (error) {
+            res.send(error)
+        }
+    }
+
+    // controller untuk orders : show, edit , add, delete
+    static async showOrders(req, res){
+        try {
+            const role = req.session.userRole
+            let data = await Order.findAll({
+                include: [
+                    {
+                        model: User,
+                    },
+                    {
+                        model: OrderProduct,
+                    }
+                ]
+            })
+            
+            res.render('./admin/showOrder', {data,rupiah, role})
+        } catch (error) {
+            res.send(error)
+        }
+    }
+
+    static async renderEditOrder(req,res){
+        try {
+            const {id} = req.params
+            const data = await Order.findByPk(id)
+
+            res.render("./admin/showOrder", {data,id})
+        } catch (error) {
+            res.send(error)
+        }
+    }
+
+    static async handlerEditOrder(req,res){
+        try {
+            const {UserId,orderStatus,totalAmount} = req.body
+            const {id} = req.params
+
+            await Order.update({
+                UserId:UserId,
+                orderStatus:orderStatus,
+                totalAmount:totalAmount
+            },{
+                where:{
+                    id
+                }
+            })
+            
+            res.redirect('/admin/order')
         } catch (error) {
             res.send(error)
         }

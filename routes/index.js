@@ -5,6 +5,8 @@ const {redirectLogin, redirectAdmin, redirectUser} = require('../middleware/auth
 const adminRouter = require('./admin')
 const userRouter = require('./user')
 
+
+
 router.get('/', UserController.home)
 
 router.get('/register', UserController.readRegister)
